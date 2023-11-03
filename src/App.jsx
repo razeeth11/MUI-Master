@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Grid } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import { Box } from "@mui/system";
+import { styled } from '@mui/material/styles';
+import "./App.css";
+import {ResponsiveAppBar} from './AppBar'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ResponsiveAppBar />
     </>
-  )
+  );
 }
 
-export default App
+const Div = styled('div')(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(1),
+}));
+
+function Example() {
+  return (
+    <Grid container spacing={0} justifyContent="center" gap="10px">
+      <Grid xs={12} sm={6} md={3}>
+        <TextField
+          sx={{ width: "100%" }}
+          id="filled-basic"
+          label="Filled"
+          variant="filled"
+        />
+      </Grid>
+      <Grid xs={12} sm={6} md={3}>
+        <TextField
+          sx={{ width: "100%" }}
+          id="filled-basic"
+          label="Filled"
+          variant="filled"
+        />
+      </Grid>
+      <Grid xs={12} sm={6} md={3}>
+          {/* <TextField
+            sx={{ width: "100%" }}
+            id="filled-basic"
+            label="Filled"
+            variant="filled"
+          />
+          <TextField
+            sx={{ width: "100%" }}
+            id="filled-basic"
+            label="Filled"
+            variant="filled"
+          /> */}
+          <Div>{"This div's text looks like that of a button."}</Div>
+      </Grid>
+    </Grid>
+  );
+}
+
+export default App;
